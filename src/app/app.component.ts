@@ -11,7 +11,7 @@ import { RandomFactsComponent } from './random-facts/random-facts.component';
     RouterOutlet,
     HttpClientModule,
     PasswordFormComponent,
-    RandomFactsComponent,
+    RandomFactsComponent, 
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
