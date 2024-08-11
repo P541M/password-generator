@@ -1,4 +1,4 @@
-# Secure Password Generator
+# Password Generator
 
 The Secure Password Generator is an Angular web application designed to help users create strong, secure passwords based on their specific preferences. Users can choose from various options such as length, numbers, symbols, and case sensitivity. The generated password can be copied directly to the clipboard and even sent to the user's email for safekeeping, ensuring the utmost security and convenience.
 
