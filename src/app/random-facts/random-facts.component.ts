@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FactsService } from '../facts.service'; // Import the service
 
 @Component({
   selector: 'app-random-facts',
@@ -8,11 +9,30 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule], // Import CommonModule to use *ngFor and other common directives
 })
-export class RandomFactsComponent {
-  facts: string[] = [
-    'The average person uses the same password for multiple accounts.',
-    'Using a password manager can help keep your accounts secure.',
-    'A strong password should include uppercase, lowercase, numbers, and symbols.',
-    'Avoid using easily guessable information like your birthdate as your password.',
-  ];
+export class RandomFactsComponent implements OnInit {
+  facts: string[] = [];
+  currentFact: string = ''; // Holds the current fact being displayed
+
+  constructor(private factsService: FactsService) {}
+
+  ngOnInit() {
+    this.facts = this.factsService.getFacts(); // Get the facts from the service
+    this.showRandomFact(); // Show a random fact on init
+
+    // Only start the interval if we're running on the client side
+    if (typeof window !== 'undefined') {
+      this.switchFact();
+    }
+  }
+
+  showRandomFact() {
+    const randomIndex = Math.floor(Math.random() * this.facts.length);
+    this.currentFact = this.facts[randomIndex];
+  }
+
+  switchFact() {
+    setInterval(() => {
+      this.showRandomFact(); // Pick a random fact each time
+    }, 5000); // Switch fact every 4 seconds
+  }
 }
