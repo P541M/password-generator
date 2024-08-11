@@ -2,26 +2,9 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-password-strength',
-  standalone: true, // Make it a standalone component
-  template: `
-    <p>Password Strength: {{ strength }}</p>
-    <div class="strength-bar">
-      <div [style.width.%]="strength"></div>
-    </div>
-  `,
-  styles: [
-    `
-      .strength-bar {
-        width: 100%;
-        height: 10px;
-        background-color: #e0e0e0;
-      }
-      .strength-bar div {
-        height: 100%;
-        background-color: green;
-      }
-    `,
-  ],
+  standalone: true,
+  templateUrl: './password-strength.component.html', // Using external template
+  styleUrls: ['./password-strength.component.css'],
 })
 export class PasswordStrengthComponent {
   @Input() password: string | null = '';
