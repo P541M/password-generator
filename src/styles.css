@@ -14,28 +14,6 @@ body {
   background-attachment: fixed;
 }
 
-.container {
-  max-width: 40rem;
-  margin: 2rem auto;
-  padding: 2rem;
-  background-color: white;
-  border-radius: 1rem;
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-  font-size: 2.25rem;
-  font-weight: 700;
-  color: #1e3a8a;
-  margin-bottom: 1.5rem;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
 input[type="range"] {
   appearance: none;
   width: 100%;
@@ -77,7 +55,7 @@ button:active {
 
 button:focus {
   outline: none;
-  box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.3);
+  box-shadow: none; /* No highlight on focus */
 }
 
 .password-strength-bar {
@@ -103,11 +81,7 @@ button:focus {
   z-index: 50;
 }
 
-.modal-content {
-  background-color: white;
-  padding: 2rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  max-width: 30rem;
-  width: 100%;
+button[aria-label="Copy password"]:focus {
+  outline: none;
+  box-shadow: none; /* Remove the box shadow highlight */
 }
