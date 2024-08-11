@@ -8,7 +8,7 @@ import { PasswordStrengthComponent } from '../password-strength/password-strengt
 @Component({
   selector: 'app-password-form',
   standalone: true,
-  imports: [CommonModule, FormsModule, PasswordStrengthComponent], // Ensure this line includes PasswordStrengthComponent
+  imports: [CommonModule, FormsModule, PasswordStrengthComponent],
   templateUrl: './password-form.component.html',
   styleUrls: ['./password-form.component.css'],
   providers: [PasswordService, EmailService],
@@ -22,6 +22,10 @@ export class PasswordFormComponent {
     useSymbols: true,
   };
   generatedPassword: string | null = null;
+  passwordCopied = false;
+  showEmailForm = false;
+  email = '';
+  passwordName = '';
 
   constructor(
     private passwordService: PasswordService,
@@ -33,14 +37,39 @@ export class PasswordFormComponent {
       .generatePassword(this.options)
       .subscribe((response: any) => {
         this.generatedPassword = response.password;
+        this.passwordCopied = false;
       });
   }
 
+  copyPassword() {
+    if (this.generatedPassword) {
+      navigator.clipboard.writeText(this.generatedPassword).then(() => {
+        this.passwordCopied = true;
+        setTimeout(() => {
+          this.passwordCopied = false;
+        }, 2000);
+      });
+    }
+  }
+
+  openEmailForm() {
+    this.showEmailForm = true;
+  }
+
+  closeEmailForm() {
+    this.showEmailForm = false;
+  }
+
   sendEmail() {
-    const email = prompt('Enter your email:');
-    const passwordName = prompt('Name your password:');
-    this.emailService
-      .sendEmail({ email, password: this.generatedPassword, passwordName })
-      .subscribe();
+    if (this.email && this.passwordName && this.generatedPassword) {
+      this.emailService
+        .sendEmail({
+          email: this.email,
+          password: this.generatedPassword,
+          passwordName: this.passwordName,
+        })
+        .subscribe();
+      this.closeEmailForm();
+    }
   }
 }
