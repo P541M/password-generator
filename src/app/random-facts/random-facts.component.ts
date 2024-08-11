@@ -1,21 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { FactsService } from '../services/facts.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-random-facts',
-  template: `
-    <div>
-      <h3>Did You Know?</h3>
-      <p>{{ fact }}</p>
-    </div>
-  `,
+  templateUrl: './random-facts.component.html',
+  styleUrls: ['./random-facts.component.css'],
+  standalone: true,  // Make it standalone
 })
-export class RandomFactsComponent implements OnInit {
-  fact: string | null = '';
-
-  constructor(private factsService: FactsService) {}
-
-  ngOnInit() {
-    this.fact = this.factsService.getRandomFact();
-  }
+export class RandomFactsComponent {
+  facts: string[] = [
+    "The average person uses the same password for multiple accounts.",
+    "Using a password manager can help keep your accounts secure.",
+    "A strong password should include uppercase, lowercase, numbers, and symbols.",
+    "Avoid using easily guessable information like your birthdate as your password."
+  ];
 }
