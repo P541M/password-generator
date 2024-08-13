@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import zxcvbn from 'zxcvbn';
 
 @Component({
   selector: 'app-password-strength',
@@ -10,53 +11,27 @@ export class PasswordStrengthComponent {
   @Input() password: string | null = '';
 
   get strength() {
-    if (!this.password) return 0;
+    if (!this.password) return { score: 0, color: '#ef4444' }; // Default to red
 
-    let score = 0;
+    const analysis = zxcvbn(this.password);
+    const scorePercentage = (analysis.score / 4) * 100;
 
-    // Length scoring adjusted for 12-100 characters
-    const length = this.password.length;
-    if (length >= 20) {
-      score += 30; // Maximum length bonus
-    } else if (length >= 18) {
-      score += 25; // Very strong length
-    } else if (length >= 15) {
-      score += 20; // Strong length
-    } else if (length >= 12) {
-      score += 10; // Minimum length
+    let color = '#ef4444'; // Default to red for weak passwords
+    if (scorePercentage > 75) {
+      color = '#10b981'; // Green for strong passwords
+    } else if (scorePercentage > 50) {
+      color = '#facc15'; // Yellow for medium strength
+    } else if (scorePercentage > 25) {
+      color = '#fb923c'; // Orange for weak
     }
 
-    // Character variety scoring
-    const hasUpperCase = /[A-Z]/.test(this.password);
-    const hasLowerCase = /[a-z]/.test(this.password);
-    const hasNumbers = /[0-9]/.test(this.password);
-    const hasSymbols = /[\W]/.test(this.password);
+    return { score: scorePercentage, color };
+  }
 
-    const varietyCount = [
-      hasUpperCase,
-      hasLowerCase,
-      hasNumbers,
-      hasSymbols,
-    ].filter(Boolean).length;
-    score += varietyCount * 15;
+  get crackTime() {
+    if (!this.password) return '';
 
-    // Penalize repetitive characters
-    const uniqueChars = new Set(this.password).size;
-    const repetitionPenalty = (length - uniqueChars) * 2;
-    score -= repetitionPenalty;
-
-    // Penalize common patterns (e.g., '1234', 'abcd', 'password')
-    const commonPatterns = [/1234/, /abcd/, /password/, /qwerty/, /letmein/];
-    for (const pattern of commonPatterns) {
-      if (pattern.test(this.password.toLowerCase())) {
-        score -= 20;
-        break;
-      }
-    }
-
-    // Ensure the score is within 0-100 range
-    score = Math.max(0, Math.min(score, 100));
-
-    return score;
+    const analysis = zxcvbn(this.password);
+    return analysis.crack_times_display.offline_slow_hashing_1e4_per_second;
   }
 }
