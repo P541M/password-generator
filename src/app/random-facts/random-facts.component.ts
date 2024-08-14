@@ -33,6 +33,6 @@ export class RandomFactsComponent implements OnInit {
   switchFact() {
     setInterval(() => {
       this.showRandomFact(); // Pick a random fact each time
-    }, 5000); // Switch fact every 4 seconds
+    }, 7000); // Switch fact every 7 seconds
   }
 }
