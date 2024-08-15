@@ -5,10 +5,7 @@ import { AppComponent } from './app/app.component';
 
 const updatedAppConfig = {
   ...appConfig,
-  providers: [
-    provideHttpClient(withFetch()),
-    ...(appConfig.providers || []),
-  ],
+  providers: [provideHttpClient(withFetch()), ...(appConfig.providers || [])],
 };
 
 bootstrapApplication(AppComponent, updatedAppConfig).catch((err) =>

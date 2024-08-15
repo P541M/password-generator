@@ -5,10 +5,7 @@ import { config } from './app/app.config.server';
 
 const updatedServerConfig = {
   ...config,
-  providers: [
-    provideHttpClient(withFetch()),
-    ...(config.providers || []),
-  ],
+  providers: [provideHttpClient(withFetch()), ...(config.providers || [])],
 };
 
 const bootstrap = () => bootstrapApplication(AppComponent, updatedServerConfig);
