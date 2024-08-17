@@ -1,20 +1,23 @@
-<div class="flex flex-col min-h-screen bg-gray-100">
-  <main class="flex-grow flex items-center justify-center">
-    <div class="space-y-12">
+<div class="flex flex-col min-h-screen">
+  <main class="flex-grow">
+    <section class="bg-lightGray py-12">
       <app-password-form></app-password-form>
+    </section>
+    <section class="bg-darkMint py-12 text-center text-white">
       <app-trusted-by></app-trusted-by>
+    </section>
+    <section class="bg-lightBlue py-12 text-center">
       <app-random-facts></app-random-facts>
-    </div>
+    </section>
   </main>
-
-  <footer class="text-center text-sm text-muted py-3">
+  <footer class="text-primary py-4 text-center text-xs">
     <p>
       Created by
       <a
         href="https://p541m.github.io/portfolio/"
         target="_blank"
         rel="noopener noreferrer"
-        class="hover:underline"
+        class="underline"
       >
         Psalm Eleazar
       </a>
