@@ -3,12 +3,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PasswordService } from '../password.service';
 import { EmailService } from '../email.service';
-import { PasswordStrengthComponent } from '../password-strength/password-strength.component';
 
 @Component({
   selector: 'app-password-form',
   standalone: true,
-  imports: [CommonModule, FormsModule, PasswordStrengthComponent],
+  imports: [CommonModule, FormsModule],
   templateUrl: './password-form.component.html',
   styleUrls: ['./password-form.component.css'],
   providers: [PasswordService, EmailService],

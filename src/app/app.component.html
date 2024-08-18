@@ -1,16 +1,20 @@
 <div class="flex flex-col min-h-screen">
-  <main class="flex-grow">
-    <section class="bg-lightGray py-12">
+  <main class="flex-grow flex flex-col justify-between">
+    <section class="flex-grow bg-lightGray py-6">
       <app-password-form></app-password-form>
     </section>
-    <section class="bg-darkMint py-12 text-center text-white">
+    <section
+      class="flex-grow bg-darkMint text-center text-white flex flex-col justify-center"
+    >
       <app-trusted-by></app-trusted-by>
     </section>
-    <section class="bg-lightBlue py-12 text-center">
+    <section
+      class="flex-grow bg-lightBlue py-6 text-center flex flex-col justify-center"
+    >
       <app-random-facts></app-random-facts>
     </section>
   </main>
-  <footer class="text-primary py-4 text-center text-xs">
+  <footer class="bg-surface text-primary py-2 text-center text-xs">
     <p>
       Created by
       <a
