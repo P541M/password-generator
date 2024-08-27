@@ -74,24 +74,6 @@ button:focus {
   box-shadow: none;
 }
 
-.password-strength-bar {
-  height: 6px;
-  background-color: #a0aec0;
-  border-radius: 9999px;
-  overflow: hidden;
-}
-
-.password-strength-bar > div {
-  height: 100%;
-  transition: width 0.3s ease, background-color 0.3s ease;
-}
-
-.time-to-crack {
-  font-size: 0.875rem;
-  color: #4a5568;
-  margin-top: 0.5rem;
-}
-
 .modal {
   position: fixed;
   inset: 0;
