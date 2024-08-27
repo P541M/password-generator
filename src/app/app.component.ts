@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { PasswordFormComponent } from './password-form/password-form.component';
-import { RandomFactsComponent } from './random-facts/random-facts.component';
 import { TrustedByComponent } from './trusted-by/trusted-by.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { FooterComponent } from './footer/footer.component';
@@ -14,7 +13,6 @@ import { FooterComponent } from './footer/footer.component';
     RouterOutlet,
     HttpClientModule,
     PasswordFormComponent,
-    RandomFactsComponent,
     TrustedByComponent,
     LandingPageComponent,
     FooterComponent,
