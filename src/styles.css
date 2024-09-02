@@ -32,8 +32,9 @@ html::-webkit-scrollbar {
 input[type="range"] {
   appearance: none;
   width: 100%;
-  height: 8px;
-  background: #9ca3af;
+  height: 10px;
+  background: linear-gradient(90deg, #6ee7b7 0%, #10b981 100%);
+  border-radius: 5px;
   outline: none;
   opacity: 0.9;
   transition: opacity 0.2s;
@@ -41,6 +42,37 @@ input[type="range"] {
 
 input[type="range"]:hover {
   opacity: 1;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background-color: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+input[type="range"]:hover::-webkit-slider-thumb {
+  background-color: #6ee7b7;
+  transform: scale(1.1);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background-color: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+input[type="range"]:hover::-moz-range-thumb {
+  background-color: #6ee7b7;
+  transform: scale(1.1);
 }
 
 input[type="checkbox"] {
