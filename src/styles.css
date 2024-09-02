@@ -45,7 +45,7 @@ input[type="range"]:hover {
 }
 
 input[type="checkbox"] {
-  accent-color: #10B981;
+  accent-color: #10b981;
 }
 
 button {
@@ -70,21 +70,6 @@ button:active {
 }
 
 button:focus {
-  outline: none;
-  box-shadow: none;
-}
-
-.modal {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(26, 32, 44, 0.5);
-  z-index: 50;
-}
-
-button[aria-label="Copy password"]:focus {
   outline: none;
   box-shadow: none;
 }
