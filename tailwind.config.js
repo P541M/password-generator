@@ -4,13 +4,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#1a202c", // Dark gray for text and primary elements
-        secondary: "#2d3748", // Medium gray for secondary elements
-        accent: "#4a5568", // Lighter gray for accents
-        background: "#edf2f7", // Light gray for background
-        surface: "#ffffff", // White for cards and surfaces
-        muted: "#a0aec0", // Muted gray for borders and inactive elements
-        hintBlue: "#3182ce", // Hint of blue for subtle accents
+        primary: "#1F2937", // Dark navy blue for text and primary elements
+        secondary: "#4B5563", // Soft charcoal gray for secondary elements
+        accent: "#10B981", // Subtle green for accents like buttons
+        background: "#F3F4F6", // Light gray for background
+        surface: "#E5E7EB", // Slightly darker gray for cards and surfaces
+        muted: "#9CA3AF", // Cool gray for borders and inactive elements
+        hint: "#6EE7B7", // Soft desaturated green for subtle accents
       },
     },
   },
