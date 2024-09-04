@@ -67,7 +67,9 @@ export class PasswordFormComponent {
           password: this.generatedPassword,
           passwordName: this.passwordName,
         })
-        .subscribe();
+        .subscribe(() => {
+          alert('Password sent to email!');
+        });
       this.closeEmailForm();
     }
   }
