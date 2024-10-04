@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PasswordService } from '../password.service';
@@ -87,5 +87,14 @@ export class PasswordFormComponent {
     // Clear only the email and passwordName fields, keep the generated password
     this.email = '';
     this.passwordName = '';
+  }
+
+  // Detect clicks outside the modal and close the modal
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    if (target.classList.contains('modal-overlay')) {
+      this.closeEmailForm();
+    }
   }
 }
