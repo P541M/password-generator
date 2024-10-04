@@ -62,6 +62,12 @@ export class PasswordFormComponent {
 
   sendEmail() {
     if (this.email && this.passwordName && this.generatedPassword) {
+      console.log('Sending email with data:', {
+        email: this.email,
+        password: this.generatedPassword,
+        passwordName: this.passwordName,
+      });
+
       this.emailService
         .sendEmail({
           email: this.email,
