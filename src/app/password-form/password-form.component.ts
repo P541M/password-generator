@@ -25,6 +25,7 @@ export class PasswordFormComponent {
   showEmailForm = false;
   email = '';
   passwordName = '';
+  emailSent = false; // Property to show success message
 
   constructor(
     private passwordService: PasswordService,
@@ -53,6 +54,7 @@ export class PasswordFormComponent {
 
   openEmailForm() {
     this.showEmailForm = true;
+    this.emailSent = false; // Reset success message when reopening the form
   }
 
   closeEmailForm() {
@@ -75,9 +77,8 @@ export class PasswordFormComponent {
           passwordName: this.passwordName,
         })
         .subscribe(() => {
-          alert('Password sent to email!');
+          this.emailSent = true; // Show success message
           this.clearEmailForm(); // Clear the email form after sending
-          this.closeEmailForm(); // Close the email modal after sending
         });
     }
   }
