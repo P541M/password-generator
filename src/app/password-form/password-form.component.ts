@@ -57,6 +57,7 @@ export class PasswordFormComponent {
 
   closeEmailForm() {
     this.showEmailForm = false;
+    this.clearEmailForm(); // Clear only the email form fields on cancel
   }
 
   sendEmail() {
@@ -69,8 +70,15 @@ export class PasswordFormComponent {
         })
         .subscribe(() => {
           alert('Password sent to email!');
+          this.clearEmailForm(); // Clear the email form after sending
+          this.closeEmailForm(); // Close the email modal after sending
         });
-      this.closeEmailForm();
     }
+  }
+
+  clearEmailForm() {
+    // Clear only the email and passwordName fields, keep the generated password
+    this.email = '';
+    this.passwordName = '';
   }
 }
