@@ -26,6 +26,7 @@ export class PasswordFormComponent {
   email = '';
   passwordName = '';
   emailSent = false; // Property to show success message
+  isSendingEmail = false; // Property to show "Sending" message
 
   constructor(
     private passwordService: PasswordService,
@@ -64,11 +65,7 @@ export class PasswordFormComponent {
 
   sendEmail() {
     if (this.email && this.passwordName && this.generatedPassword) {
-      console.log('Sending email with data:', {
-        email: this.email,
-        password: this.generatedPassword,
-        passwordName: this.passwordName,
-      });
+      this.isSendingEmail = true; // Set loading state
 
       this.emailService
         .sendEmail({
@@ -76,10 +73,16 @@ export class PasswordFormComponent {
           password: this.generatedPassword,
           passwordName: this.passwordName,
         })
-        .subscribe(() => {
-          this.emailSent = true; // Show success message
-          this.clearEmailForm(); // Clear the email form after sending
-        });
+        .subscribe(
+          () => {
+            this.emailSent = true; // Show success message
+            this.isSendingEmail = false; // Clear loading state
+            this.clearEmailForm(); // Clear the email form after sending
+          },
+          () => {
+            this.isSendingEmail = false; // Clear loading state on error
+          }
+        );
     }
   }
 
