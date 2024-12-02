@@ -8,6 +8,6 @@ export class PasswordService {
   constructor(private http: HttpClient) {}
 
   generatePassword(options: any) {
-    return this.http.post('http://localhost:3000/generate-password', options);
+    return this.http.post('http://password-generator-backend-phi.vercel.app/generate-password', options);
   }
 }

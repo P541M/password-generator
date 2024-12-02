@@ -8,6 +8,6 @@ export class EmailService {
   constructor(private http: HttpClient) {}
 
   sendEmail(details: any) {
-    return this.http.post('http://localhost:3000/send-email', details);
+    return this.http.post('http://password-generator-backend-phi.vercel.app/send-email', details);
   }
 }
