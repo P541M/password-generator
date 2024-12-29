@@ -2,6 +2,10 @@
 
 The Password Generator is an Angular web application designed to help users create strong, secure passwords based on their specific preferences. Users can choose from various options such as length, numbers, symbols, and case sensitivity. The generated password can be copied directly to the clipboard and even sent to the user's email for safekeeping, ensuring the utmost security and convenience.
 
+## Backend Repository
+
+https://github.com/P541M/password-generator-backend
+
 ## Features
 
 - **Customizable Passwords**: Choose password length and include/exclude numbers, symbols, uppercase, and lowercase letters.
